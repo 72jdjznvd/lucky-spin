@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Spin</title>
+</head>
+<body style="background:#111;color:white;text-align:center;font-family:Arial;padding-top:40px;">
+
+<h1>🎰 Lucky Spin</h1>
+
+<h2 id="balance">Jeton: 1000</h2>
+
+<button onclick="spin()" style="padding:15px 30px;font-size:20px;">
+SPIN
+</button>
+
+<h2 id="result"></h2>
+
+<script>
+let balance = 1000;
+
+function spin(){
+
+    if(balance<100){
+        document.getElementById("result").innerHTML="Jeton yoxdur!";
+        return;
+    }
+
+    balance-=100;
+
+    let lucky=Math.random();
+
+    if(lucky>0.75){
+        balance+=300;
+        document.getElementById("result").innerHTML="🎉 Qazandın +300";
+    }else{
+        document.getElementById("result").innerHTML="😔 Uduzdun";
+    }
+
+    document.getElementById("balance").innerHTML="Jeton: "+balance;
+
+}
+</script>
+
+</body>
+</html>
