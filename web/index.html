@@ -73,7 +73,61 @@ font-size:24px;
 }
 
 </style>
+.bet-box{
+margin:20px 0;
+}
 
+#bet{
+padding:10px;
+font-size:20px;
+border-radius:10px;
+background:#222;
+color:gold;
+border:2px solid gold;
+}
+
+.spin{
+animation:spin .12s linear infinite;
+}
+
+@keyframes spin{
+
+0%{
+transform:translateY(-15px);
+}
+
+50%{
+transform:translateY(15px);
+}
+
+100%{
+transform:translateY(-15px);
+}
+
+}
+
+.win{
+
+animation:win .5s infinite;
+
+}
+
+@keyframes win{
+
+0%{
+box-shadow:0 0 10px gold;
+}
+
+50%{
+box-shadow:0 0 45px yellow;
+transform:scale(1.08);
+}
+
+100%{
+box-shadow:0 0 10px gold;
+}
+
+}
 </head>
 
 <body>
