@@ -1,46 +1,147 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Spin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucky Spin</title>
+
+<style>
+body{
+margin:0;
+background:#121212;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+margin-top:30px;
+}
+
+#balance{
+font-size:24px;
+margin:20px;
+color:#00ff66;
+}
+
+.slot-box{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:40px;
+}
+
+.slot{
+width:90px;
+height:90px;
+background:#222;
+border-radius:15px;
+font-size:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+border:3px solid gold;
+}
+
+button{
+margin-top:40px;
+padding:15px 40px;
+font-size:22px;
+border:none;
+border-radius:12px;
+background:gold;
+cursor:pointer;
+font-weight:bold;
+}
+
+#result{
+margin-top:25px;
+font-size:24px;
+}
+</style>
+
 </head>
-<body style="background:#111;color:white;text-align:center;font-family:Arial;padding-top:40px;">
+<body>
 
 <h1>🎰 Lucky Spin</h1>
 
-<h2 id="balance">Jeton: 1000</h2>
+<div id="balance">
+Balans: <span id="coin">1000</span> 🪙
+</div>
 
-<button onclick="spin()" style="padding:15px 30px;font-size:20px;">
-SPIN
-</button>
+<div class="slot-box">
 
-<h2 id="result"></h2>
+<div class="slot" id="s1">🍒</div>
+
+<div class="slot" id="s2">🍋</div>
+
+<div class="slot" id="s3">⭐</div>
+
+</div>
+
+<button onclick="spin()">SPIN</button>
+
+<div id="result"></div>
 
 <script>
-let balance = 1000;
+
+let balance=1000;
+
+const items=[
+"🍒",
+"🍋",
+"🍇",
+"⭐",
+"💎",
+"7️⃣"
+];
+
+function randomItem(){
+return items[Math.floor(Math.random()*items.length)];
+}
 
 function spin(){
 
-    if(balance<100){
-        document.getElementById("result").innerHTML="Jeton yoxdur!";
-        return;
-    }
+if(balance<10){
+alert("Balans yoxdur");
+return;
+}
 
-    balance-=100;
+balance-=10;
 
-    let lucky=Math.random();
+document.getElementById("coin").innerText=balance;
 
-    if(lucky>0.75){
-        balance+=300;
-        document.getElementById("result").innerHTML="🎉 Qazandın +300";
-    }else{
-        document.getElementById("result").innerHTML="😔 Uduzdun";
-    }
+let a=randomItem();
+let b=randomItem();
+let c=randomItem();
 
-    document.getElementById("balance").innerHTML="Jeton: "+balance;
+document.getElementById("s1").innerText=a;
+document.getElementById("s2").innerText=b;
+document.getElementById("s3").innerText=c;
+
+let text="Uduzdun 😔";
+
+if(a==b && b==c){
+
+balance+=100;
+
+text="🎉 JACKPOT +100";
 
 }
+else if(a==b || b==c || a==c){
+
+balance+=25;
+
+text="✨ +25 qazandın";
+
+}
+
+document.getElementById("coin").innerText=balance;
+
+document.getElementById("result").innerHTML=text;
+
+}
+
 </script>
 
 </body>
