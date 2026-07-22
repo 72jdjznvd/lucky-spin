@@ -51,9 +51,16 @@ spinBtn.onclick = ()=>{
 
         if(a==b && b==c){
 
-            coins+=100;
+    coins+=100;
 
-            result.innerHTML="🎉 JACKPOT +100";
+    reels.forEach(r=>r.classList.add("win"));
+
+    setTimeout(()=>{
+        reels.forEach(r=>r.classList.remove("win"));
+    },3000);
+
+    result.innerHTML="🎉 JACKPOT! +100";
+        }
 
         }else if(a==b || b==c || a==c){
 
