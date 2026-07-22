@@ -1,7 +1,7 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="web")
 
 @app.route("/")
 def home():
-    return "🎰 Lucky Spin Mini App işləyir!"
+    return send_from_directory("web", "index.html")
